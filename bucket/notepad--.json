@@ -10,11 +10,12 @@
             "hash": "4a6f4b1568a3765377ef3b5b64171b20da69eef7f97af8c2f50ff7936247235b"
         }
     },
+    "extract_dir": "Notepad--v2.15.0-win10-portable",
     "post_install": [
         "'install-context', 'uninstall-context' | ForEach-Object {",
-        "    if (Test-Path \"$bucketsdir\\my-scoop\\scripts\\notepad--\\$_.reg\") {",
+        "    if (Test-Path \"$bucketsdir\\MyScoop\\scripts\\notepad--\\$_.reg\") {",
         "        $notepadPath = \"$dir\\notepad--.exe\".Replace('\\', '\\\\')",
-        "        $content = (Get-Content \"$bucketsdir\\my-scoop\\scripts\\notepad--\\$_.reg\").Replace('$notepad', $notepadPath)",
+        "        $content = (Get-Content \"$bucketsdir\\MyScoop\\scripts\\notepad--\\$_.reg\").Replace('$notepad', $notepadPath)",
         "        if ($global) { $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE') }",
         "        Set-Content \"$dir\\$_.reg\" $content -Encoding Ascii -Force",
         "    }",
@@ -50,11 +51,8 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/cxasm/notepad--/releases/download/notepad-v$(($version.Split('.')[0] + '.' + $version.Split('.')[1]))/Notepad--v$version-win10-portable.zip"
+                "url": "https://github.com/cxasm/notepad--/releases/download/notepad-v$version/Notepad--v$version-win10-portable.zip"
             }
-        },
-        "hash": {
-            "url": "$baseurl/notepad.$version.checksums.sha256"
         }
     }
 }
