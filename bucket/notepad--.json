@@ -7,7 +7,7 @@
     "architecture": {
         "64bit": {
             "url": "https://github.com/cxasm/notepad--/releases/download/notepad-v2.15/Notepad--v2.15.0-win10-portable.zip",
-            "hash": "c5c22cf043fcb68f7e2cc69a58ca4afa46aad6fffd53d324ae2a6c5d2f5b01fa"
+            "hash": "4a6f4b1568a3765377ef3b5b64171b20da69eef7f97af8c2f50ff7936247235b"
         }
     },
     "post_install": [
