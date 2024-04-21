@@ -7,10 +7,10 @@
     "architecture": {
         "64bit": {
             "url": "https://github.com/cxasm/notepad--/releases/download/notepad-v2.15/Notepad--v2.15.0-win10-portable.zip",
-            "hash": "4a6f4b1568a3765377ef3b5b64171b20da69eef7f97af8c2f50ff7936247235b"
+            "hash": "4a6f4b1568a3765377ef3b5b64171b20da69eef7f97af8c2f50ff7936247235b",
+            "extract_dir": "Notepad--v2.15.0-win10-portable"
         }
     },
-    "extract_dir": "Notepad--v2.15.0-win10-portable",
     "post_install": [
         "'install-context', 'uninstall-context' | ForEach-Object {",
         "    if (Test-Path \"$bucketsdir\\MyScoop\\scripts\\notepad--\\$_.reg\") {",
@@ -20,9 +20,9 @@
         "        Set-Content \"$dir\\$_.reg\" $content -Encoding Ascii -Force",
         "    }",
         "}",
-        "# Update shipped plugins",
-        "if (Test-Path \"$dir\\plugins.original\") {",
-        "    Copy-Item -Recurse \"$dir\\plugins.original\\*\" \"$dir\\plugins\\\" -Force",
+        "# Install Notepad-- Context Menu",
+        "if ($cmd -eq 'install') {",
+        "    reg import \"$dir\\install-context.reg\"",
         "}"
     ],
     "uninstaller": {
@@ -51,7 +51,8 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/cxasm/notepad--/releases/download/notepad-v$version/Notepad--v$version-win10-portable.zip"
+                "url": "https://github.com/cxasm/notepad--/releases/download/notepad-v$majorVersion.$minorVersion/Notepad--v$version-win10-portable.zip",
+                "extract_dir": "Notepad--v$version-win10-portable"
             }
         }
     }
