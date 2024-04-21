@@ -1,0 +1,60 @@
+{
+    "version": "2.15.0",
+    "description": "一个支持windows/linux/mac的文本编辑器，目标是做中国人自己的编辑器，来自中国。",
+    "homepage": "https://github.com/cxasm/notepad--",
+    "license": "GPL-3.0-or-later",
+    "notes": "Add Notepad-- as a context menu option by running: reg import \"$dir\\install-context.reg\"",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/cxasm/notepad--/releases/download/notepad-v2.15/Notepad--v2.15.0-win10-portable.zip",
+            "hash": "c5c22cf043fcb68f7e2cc69a58ca4afa46aad6fffd53d324ae2a6c5d2f5b01fa"
+        }
+    },
+    "post_install": [
+        "'install-context', 'uninstall-context' | ForEach-Object {",
+        "    if (Test-Path \"$bucketsdir\\my-scoop\\scripts\\notepad--\\$_.reg\") {",
+        "        $notepadPath = \"$dir\\notepad--.exe\".Replace('\\', '\\\\')",
+        "        $content = (Get-Content \"$bucketsdir\\my-scoop\\scripts\\notepad--\\$_.reg\").Replace('$notepad', $notepadPath)",
+        "        if ($global) { $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE') }",
+        "        Set-Content \"$dir\\$_.reg\" $content -Encoding Ascii -Force",
+        "    }",
+        "}",
+        "# Update shipped plugins",
+        "if (Test-Path \"$dir\\plugins.original\") {",
+        "    Copy-Item -Recurse \"$dir\\plugins.original\\*\" \"$dir\\plugins\\\" -Force",
+        "}"
+    ],
+    "uninstaller": {
+        "script": [
+            "if ($cmd -eq 'uninstall') {",
+            "    reg import \"$dir\\uninstall-context.reg\"",
+            "}"
+        ]
+    },
+    "bin": "notepad--.exe",
+    "shortcuts": [
+        [
+            "notepad--.exe",
+            "Notepad--"
+        ]
+    ],
+    "persist": [
+        "plugin",
+        "themes"
+    ],
+    "checkver": {
+        "github": "https://api.github.com/repositories/503592660/releases/latest",
+        "jsonpath": "$..browser_download_url",
+        "regex": "Notepad--v([\\d.]+)-win10-portable"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/cxasm/notepad--/releases/download/notepad-v$version/Notepad--v$version-win10-portable.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/notepad.$version.checksums.sha256"
+        }
+    }
+}
