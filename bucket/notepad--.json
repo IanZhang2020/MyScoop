@@ -7,7 +7,7 @@
     "architecture": {
         "64bit": {
             "url": "https://github.com/cxasm/notepad--/releases/download/notepad-v2.16/Notepad--v2.16.0-win10-portable.zip",
-            "hash": "eb32b5740840da1b291e7ca1785b1468db69a00e448033c6e176b54b0ff5d259  Notepad--v2.16.0-win10-portable.zip",
+            "hash": "eb32b5740840da1b291e7ca1785b1468db69a00e448033c6e176b54b0ff5d259",
             "extract_dir": "Notepad--v2.16.0-win10-portable"
         }
     },
