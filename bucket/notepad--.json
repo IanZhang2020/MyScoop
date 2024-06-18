@@ -44,7 +44,7 @@
         "themes"
     ],
     "checkver": {
-        "github": "https://api.github.com/repositories/503592660",
+        "github": "https://api.github.com/repos/cxasm/notepad--/releases",
         "jsonpath": "$..browser_download_url",
         "regex": "Notepad--v([\\d.]+)-win10-portable"
     },
