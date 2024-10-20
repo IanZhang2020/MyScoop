@@ -1,14 +1,14 @@
 {
-    "version": "2.18.0",
+    "version": "2.20.0",
     "description": "一个支持windows/linux/mac的文本编辑器，目标是做中国人自己的编辑器，来自中国。",
     "homepage": "https://github.com/cxasm/notepad--",
     "license": "GPL-3.0-or-later",
     "notes": "Add Notepad-- as a context menu option by running: reg import \"$dir\\install-context.reg\"",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/cxasm/notepad--/releases/download/notepad-v2.18/Notepad--v2.18.0-win10-portable.zip",
-            "hash": "83a9e79b1b3e5a49cc472b5f88879c12b4f84961297815f9cc1920458e3e407f",
-            "extract_dir": "Notepad--v2.18.0-win10-portable"
+            "url": "https://github.com/cxasm/notepad--/releases/download/notepad-v2.20/Notepad--v2.20.0-win10-portable.zip",
+            "hash": "4034ff20399ab7fca85b4f598894a8a07aad9f786a81e129635679e300438ecf",
+            "extract_dir": "Notepad--v2.20.0-win10-portable"
         }
     },
     "post_install": [
